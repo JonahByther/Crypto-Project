@@ -10,6 +10,7 @@ void vigenereCryption(string filename, string key, bool encrypt){
     string outputFilename;
     string text;
     char base;
+    int shift;
 
     if (!inputFile) {
         cerr << "Error opening file!" << endl;
@@ -23,8 +24,11 @@ void vigenereCryption(string filename, string key, bool encrypt){
         outputFilename = "decrypted_vigenere.txt";
     }
     ofstream outputFile(outputFilename);
-    getline(inputFile, text, '\0');
+    getline(inputFile, text, '\0'); //puts the inputfile into a single string
 
+    /*This checks the see if the character is uppercase or lowercase, then based on that, it 
+    
+    */
     for (size_t i = 0; i < text.length(); i++){
         if (isalpha(text[i])){
             if(isupper(text[i])){
@@ -33,7 +37,7 @@ void vigenereCryption(string filename, string key, bool encrypt){
             else{
                 base = 'a';
             }
-            int shift = key[i % key.length()] - base;
+            shift = key[i % key.length()] - base;
             if(encrypt){
                 text[i] = (text[i] - base + shift) % 26 + base;
             }

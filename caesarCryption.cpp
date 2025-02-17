@@ -25,6 +25,10 @@ void caesarCryption(string filename, int key, bool encrypt){
 
     ofstream outputFile(outputFilename);
 
+    /*This checks the see if the character is uppercase or lowercase, then based on that, if it
+        is encrypting, it replaces the character with a specific equation, and if it is decrypting, then it 
+        replaces that character with a different equation that basically reverses what it did in the other one.
+    */
     while(inputFile.get(ch)){
         if(isalpha(ch)){
             if(isupper(ch)){
